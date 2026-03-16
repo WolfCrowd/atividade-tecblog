@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body>
+
+<div id="area-cabecalho">
+
+<div id="area-logo">
+<h1>Tec<span class="branco">Blog</span></h1>
+</div>
+
+</div>
+
+<div id="area-principal">
+
+<h2>Login</h2>
+
+<form onsubmit="login(event)">
+
+<input type="email" id="email" placeholder="Email" required><br><br>
+
+<input type="password" id="senha" placeholder="Senha" required><br><br>
+
+<button type="submit">Entrar</button>
+
+</form>
+
+<br>
+
+<p id="mensagem"></p>
+
+<br>
+
+<a href="cadastro.html">Criar conta</a><br><br>
+
+<a href="index.html">Voltar para Home</a>
+
+</div>
+
+<script>
+
+function login(event){
+
+event.preventDefault()
+
+let email = document.getElementById("email").value
+let senha = document.getElementById("senha").value
+
+let usuario = JSON.parse(localStorage.getItem("usuario"))
+
+if(usuario && email === usuario.email && senha === usuario.senha){
+
+localStorage.setItem("logado","true")
+
+window.location.href = "index.html"
+
+}else{
+
+document.getElementById("mensagem").innerText =
+"Email ou senha incorretos"
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
